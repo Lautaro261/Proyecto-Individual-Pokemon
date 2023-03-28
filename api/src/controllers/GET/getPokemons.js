@@ -7,9 +7,24 @@ const limit = '?limit=2'
 
 const getDataBasePokemons = async (req, res)=>{
     try {
-        const responseDB = await axios.get("")
+        const responseDB = await Pokemon.findAll()
+        const pokeDB = responseDB.map((char)=>{
+            return{
+                id: char.id,
+                name: char.name,
+                image: char.image,
+                hp: char.hp,
+                attack: char.attack,
+                defense: char.defense,
+                speed: char.speed,
+                height: char.height,
+                weight: char.weight,
+            }
+        })
+        res.status(200).json(pokeDB)
     } catch (error) {
-        
+        /* res.status(404).json(error.message) */
+        console.log(error)
     }
 
 }
@@ -47,18 +62,11 @@ const getAPIPokemons = async(req, res)=>{
                 weight: pokemon.weight,
             }
         })
-
-
         res.status(200).json(pokemons)
 
-
-
-
-
-
-
     } catch (error) {
-        res.status(400).json(error.message)
+        /* res.status(400).json(error.message) */
+        console.log(error)
     }
 
 }
@@ -67,8 +75,21 @@ const getAPIPokemons = async(req, res)=>{
 
 
 
-const getAllPokemons =(req, res)=>{
-    return Pokemon
+const getAllPokemons = async(req, res)=>{
+    
+
+    try {
+        
+
+        console.log(getAPIPokemons())
+        const [pokesDB, pokesAPI] = await axios.all([getDataBasePokemons(), getAPIPokemons()])
+        console.log(pokesAPI)
+        return [... pokesDB, ...pokesAPI]
+    } catch (error) {
+        
+        /* res.status(403).json(error.message) */
+        console.log(error)
+    }
 };
 
 
@@ -90,4 +111,5 @@ const getAllPokemons =(req, res)=>{
 module.exports= {
     getAllPokemons,
     getAPIPokemons,
+    getDataBasePokemons,
 };
