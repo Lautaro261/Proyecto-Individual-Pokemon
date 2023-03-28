@@ -21,7 +21,8 @@ const getDataBasePokemons = async (req, res)=>{
                 weight: char.weight,
             }
         })
-        res.status(200).json(pokeDB)
+        return pokeDB;
+        /* res.status(200).json(pokeDB) */
     } catch (error) {
         /* res.status(404).json(error.message) */
         console.log(error)
@@ -62,7 +63,8 @@ const getAPIPokemons = async(req, res)=>{
                 weight: pokemon.weight,
             }
         })
-        res.status(200).json(pokemons)
+        /* res.status(200).json(pokemons) */
+        return pokemons
 
     } catch (error) {
         /* res.status(400).json(error.message) */
@@ -83,11 +85,13 @@ const getAllPokemons = async(req, res)=>{
 
         console.log(getAPIPokemons())
         const [pokesDB, pokesAPI] = await axios.all([getDataBasePokemons(), getAPIPokemons()])
-        console.log(pokesAPI)
-        return [... pokesDB, ...pokesAPI]
+       
+        /* return [... pokesDB, ...pokesAPI] */
+        const allPokemons = [... pokesDB, ...pokesAPI]
+        res.status(200).json(allPokemons)
     } catch (error) {
         
-        /* res.status(403).json(error.message) */
+        res.status(403).json(error.message)
         console.log(error)
     }
 };

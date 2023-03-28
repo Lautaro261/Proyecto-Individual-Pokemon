@@ -6,7 +6,7 @@ const { getAllPokemons, getAPIPokemons, getDataBasePokemons} = require('../contr
 
 const routes = Router();
 
-routes.get("/pokemons",  getAPIPokemons );
+routes.get("/pokemons",  getAllPokemons );
 
 
 
