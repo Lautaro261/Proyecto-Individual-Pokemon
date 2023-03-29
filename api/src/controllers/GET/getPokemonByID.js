@@ -1,12 +1,13 @@
-const { Pokemon } = require("../../models/Pokemon");
+const { Pokemon } = require("../../db");
 const axios = require("axios");
 const URL = 'https://pokeapi.co/api/v2/pokemon';
 
 
 
 const getPokemonID = async (req, res)=>{
- try {
-       const {idPoke} = req.params;
+    const {idPoke} = req.params;
+
+    try {
        if(idPoke.length < 5){
 
         // Peticion a la API
@@ -27,11 +28,17 @@ const getPokemonID = async (req, res)=>{
         res.status(200).json(pokemon)
            
        }else{
-           //Peticion a Base Data
-       }
-   
+        //Peticion a Base Data
+        const response = await Pokemon.findOne(
+            {where:{
+                id: idPoke
+            }
+            })
+        res.status(200).json(response)   
+       }  
  } catch (error) {
-    res.status(404).json(error.message)
+    console.log('estoy entrando al getPokemonBYID')
+    res.status(404).json(error)
  }
 
 };
