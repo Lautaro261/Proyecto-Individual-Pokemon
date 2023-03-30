@@ -1,10 +1,12 @@
 const postPokemon = require("../postPokemon");
+const postType = require("../postType");
+
 
 const handlerPostPokemonDB = async (req, res) => {
   try {
-    const { name, image, hp, attack, defense, speed, height, weight } = req.body;
+    const { name, image, hp, attack, defense, speed, height, weight, type } = req.body;
 
-    const newPokemon = await postPokemon(
+    const poke = await postPokemon(
       name,
       image,
       hp,
@@ -14,7 +16,10 @@ const handlerPostPokemonDB = async (req, res) => {
       height,
       weight
     );
-    //console.log(newPokemon)
+    const typ = await postType(type);
+    const newPokemon = {...poke};
+
+    console.log(newPokemon)
     res.status(201).json(newPokemon);
 
   } catch (error) {
