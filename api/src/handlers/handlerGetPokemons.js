@@ -1,8 +1,8 @@
 const axios = require('axios')
-const getAllPokemonsDB = require('../handlers/getAllPokemonsDB');
-const getALLPokemonsAPI = require('../handlers/getAllPokemonsAPI');
-const getPokemonByNameDB = require('../handlers/getPokemonByNameDB');
-const getPokemonByNameAPI = require('../handlers/getPokemonByNameAPI');
+const getAllPokemonsDB = require('../controllers/GET/getAllPokemonsDB');
+const getALLPokemonsAPI = require('../controllers/GET/getAllPokemonsAPI');
+const getPokemonByNameDB = require('../controllers/GET/getPokemonByNameDB');
+const getPokemonByNameAPI = require('../controllers/GET/getPokemonByNameAPI');
 
 
 

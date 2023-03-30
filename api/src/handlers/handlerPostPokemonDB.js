@@ -1,5 +1,5 @@
-const postPokemon = require("../postPokemon");
-const postType = require("../postType");
+const postPokemon = require('../controllers/POST/postPokemon');
+const postType = require('../controllers/POST/postType');
 
 
 const handlerPostPokemonDB = async (req, res) => {

@@ -1,10 +1,10 @@
-const { Pokemon } = require("../../db");
+const { Pokemon } = require('../models/Pokemon')
 const axios = require("axios");
 const URL = 'https://pokeapi.co/api/v2/pokemon';
 
 
 
-const getPokemonID = async (req, res)=>{
+const handlerGetPokemonByID = async (req, res)=>{
     const {idPoke} = req.params;
 
     try {
@@ -47,4 +47,4 @@ const getPokemonID = async (req, res)=>{
 
 
 
-module.exports = getPokemonID
+module.exports = handlerGetPokemonByID;

@@ -1,4 +1,4 @@
-const { Type } = require("../db");
+const { Type } = require("../../db");
 
 const postType = async(type)=> await Type.create({name: type});
 
