@@ -1,13 +1,15 @@
 const { Router } =require("express");
-const { getAllPokemons } = require("../controllers/GET/getPokemons");
+const handlerGetPokemons = require("../controllers/GET/handlerGetPokemons");
 const getPokemonID = require("../controllers/GET/getPokemonByID");
-const getPokemonsByName = require("../controllers/GET/getPokemonByName");
+const handlerPostPokemonDB = require("../controllers/POST/handlerPostPokemonDB");
 
 const pokesRouter = Router();
 
-pokesRouter.get("/", getAllPokemons);  // ENTRA http://localhost:3001/pokemons/?name=ola 
+pokesRouter.get("/", handlerGetPokemons);  // ENTRA http://localhost:3001/pokemons/?name=ola 
 
 pokesRouter.get("/:idPoke", getPokemonID);
+
+pokesRouter.post("/", handlerPostPokemonDB);
 
 
 module.exports= pokesRouter;

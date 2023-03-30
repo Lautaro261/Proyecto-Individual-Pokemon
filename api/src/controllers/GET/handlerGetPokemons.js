@@ -1,19 +1,17 @@
-//const { Pokemon } = require('../../db');
 const axios = require('axios')
 const getAllPokemonsDB = require('../handlers/getAllPokemonsDB');
 const getALLPokemonsAPI = require('../handlers/getAllPokemonsAPI');
 const getPokemonByNameDB = require('../handlers/getPokemonByNameDB');
 const getPokemonByNameAPI = require('../handlers/getPokemonByNameAPI');
-//const URL = 'https://pokeapi.co/api/v2/pokemon';
-//const limit = '?limit=2'
 
 
 
-const getAllPokemons = async(req, res)=>{
 
+const handlerGetPokemons = async(req, res)=>{
+
+//--------------------------GET ALL----------------------------------------------
     if(req.query.name === undefined){
         try {
-       
             const [pokemonsDB, pokemonsAPI] = await axios.all([getAllPokemonsDB(), getALLPokemonsAPI()])
             const allPokemons = [... pokemonsDB, ...pokemonsAPI]
             res.status(200).json(allPokemons)
@@ -21,6 +19,9 @@ const getAllPokemons = async(req, res)=>{
             res.status(403).json(error.message)
         }
     }
+
+//--------------------------GET POR NAME-----------------------------------------------------------
+    
     if(req.query.name !==undefined){
 
         try {
@@ -57,6 +58,4 @@ const getAllPokemons = async(req, res)=>{
 
 
 
-module.exports= {
-    getAllPokemons,
-};
+module.exports= handlerGetPokemons;
