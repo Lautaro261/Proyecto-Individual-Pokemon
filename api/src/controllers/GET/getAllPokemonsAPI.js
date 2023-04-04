@@ -1,6 +1,6 @@
 const axios = require('axios');
 const URL = 'https://pokeapi.co/api/v2/pokemon';
-const limit = '?limit=2'
+const limit = '?limit=12'
 
 
 const getALLPokemonsAPI = async(req, res)=>{
