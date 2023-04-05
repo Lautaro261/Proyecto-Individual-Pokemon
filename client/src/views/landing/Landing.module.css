@@ -1,0 +1,18 @@
+.landing {
+    background-image: url('../../recursos/202331516125384_1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+  }
+
+  .button {
+    background-color: rgb(107, 21, 107);
+    border-radius: 10px;
+    color: white;
+    padding: 10px 20px;
+  }
+
+  .button:hover {
+    background-color: rgb(110, 64, 110);
+  }

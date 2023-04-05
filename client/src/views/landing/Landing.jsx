@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
+import style from './Landing.module.css'
 
 const Landing = ()=>{
     return(
-        <div>
-            <p>ESTAMOS EN LANDING... </p>
+        <div className={style.landing} > 
+            {/* <p>ESTAMOS EN LANDING... </p> */}
             <Link to='/home'>
-             <button>VAMOS A HOME</button>
+             <button className={style.button}>VAMOS A HOME</button>
             </Link>
             
         </div>

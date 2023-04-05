@@ -14,7 +14,7 @@ const Home = ()=>{
 
     return (
         <div>
-            <p>ESTAMOS EN HOME </p>
+            {/* <p>ESTAMOS EN HOME </p> */}
             <Cards />
         </div>
     )
