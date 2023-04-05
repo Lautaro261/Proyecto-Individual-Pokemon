@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getPokemonID } from "../../redux/actions";
+import { Link } from 'react-router-dom'
 
 const Detail =()=>{
     const dispatch = useDispatch();
@@ -25,6 +26,9 @@ const Detail =()=>{
             <p>Altura: {pokemon.height}</p>
             <p>Peso: {pokemon.weight}</p>
             {/* <p>tipo: {pokemon.type}</p> */}
+            <Link to='/home'>
+            <button>back home</button>
+            </Link>
 
         </div>
     )
