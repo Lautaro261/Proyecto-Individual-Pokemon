@@ -43,11 +43,11 @@ export const getPokemonByName = (name)=>{
     }
 }
 
-export const filterID = (id)=>{
+/* export const filterID = (id)=>{
     return {
         type: FILTER_ID, payload: id
     }
-}
+} */
 
 export const OrderName = (value)=>{  // default, az o za
     return {
