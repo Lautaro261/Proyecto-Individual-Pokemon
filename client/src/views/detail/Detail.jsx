@@ -11,7 +11,7 @@ const Detail =()=>{
 
     useEffect(()=>{
         dispatch(getPokemonID(id))
-    },[id])
+    },[dispatch,id])
     
     return (
         <div>

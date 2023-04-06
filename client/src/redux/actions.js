@@ -2,6 +2,8 @@ import axios from 'axios';
 export const GET_ALL_POKEMONS = 'GET_ALL_POKEMONS';
 export const GET_POKEMON_ID = 'GET_POKEMON_ID';
 export const GET_POKEMON_BY_NAME= 'GET_POKEMON_BY_NAME';
+export const FILTER_ID = 'FILTER_ID';
+export const ORDER = 'ORDER';
 
 
 export const getAllPokemons = ()=>{
@@ -37,5 +39,17 @@ export const getPokemonByName = (name)=>{
         } catch (error) {
             console.log(error.message);
         }
+    }
+}
+
+export const filterID = (id)=>{
+    return {
+        type: FILTER_ID, payload: id
+    }
+}
+
+export const OrderName = (value)=>{  // default, az o za
+    return {
+        type: ORDER, payload: value // puede ser A o D
     }
 }

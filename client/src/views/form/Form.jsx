@@ -14,7 +14,7 @@ const Form = ()=>{
         type:'',
     })
 
-    const [error, setError]=useState({
+ /*    const [error, setError]=useState({
         name:'',
         image:'',
         hp:'',
@@ -25,7 +25,7 @@ const Form = ()=>{
         weight:'',
         type:'',
     })
-
+ */
 
     const handlerInputChange =(event)=>{
         const value = event.target.value;

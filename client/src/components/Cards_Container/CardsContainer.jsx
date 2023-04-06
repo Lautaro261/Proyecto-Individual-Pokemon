@@ -8,17 +8,18 @@ const Cards =(/* {pokemons} */)=>{
     const allPokemons = useSelector(state=>state.allPokemons)
 
    useEffect(()=>{
-    console.log('allPokemons changed:', allPokemons)
+    console.log('allPokemons actualizado:', allPokemons)
+
    },[allPokemons])
     
-   console.log('Rendering Cards with allPokemons:', allPokemons)
-    // console.log (pokemons)
+   //console.log('Rendering Cards with allPokemons:', allPokemons)
+   
     return (
         <div className={style.cards} >
             {/* <p>Cards</p> */}
             {allPokemons.map((char, index)=>{
                 return (<Card
-                key={index}
+                 key={`${index}-${char.name}`} // <- Agregar esta línea
                 id={char.id}
                 name={char.name}
                 image={char.image}
