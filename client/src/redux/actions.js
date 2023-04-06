@@ -4,6 +4,7 @@ export const GET_POKEMON_ID = 'GET_POKEMON_ID';
 export const GET_POKEMON_BY_NAME= 'GET_POKEMON_BY_NAME';
 export const FILTER_ID = 'FILTER_ID';
 export const ORDER = 'ORDER';
+export const ORDER_ID = 'ORDER_ID';
 
 
 export const getAllPokemons = ()=>{
@@ -51,5 +52,11 @@ export const filterID = (id)=>{
 export const OrderName = (value)=>{  // default, az o za
     return {
         type: ORDER, payload: value // puede ser A o D
+    }
+}
+
+export const OrderId =(value)=>{ // default, id, type
+    return {
+        type: ORDER_ID, payload: value
     }
 }
