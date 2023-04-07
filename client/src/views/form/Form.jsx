@@ -1,5 +1,8 @@
 import { useState } from "react";
-import validation from "./validation";
+import axios from "axios";
+import validatePropertyValue from "./validatePropertyValue";
+
+const URL = 'http://localhost:3001/pokemons'
 
 const Form = ()=>{
 
@@ -12,7 +15,7 @@ const Form = ()=>{
         speed:'',
         height:'',
         weight:'',
-        type:'',
+        type:'', // tiene que ser un array []
     })
 
      const [errors, setErrors]=useState({
@@ -31,6 +34,7 @@ const Form = ()=>{
     const handlerInputChange =(event)=>{
         const value = event.target.value;
         const property = event.target.name;
+        console.log(`ACTUALIZADO soy value ${value} y yo property ${property}`)
 
          // actualiza el estado de form
         //setForm((prevForm) => ({ ...prevForm, [property]: value }));
@@ -39,15 +43,18 @@ const Form = ()=>{
         //validation({ ...form, [property]: value }, errors, setErrors);
 
         setForm({...form, [property]:value})
-
-        setErrors(validation({...form, [property]: value })) // validation({...form, [property]:value}) // truquito
+        setErrors({...errors, [property]: validatePropertyValue(property, value)})
+        //setErrors(validation({...form, [property]: value })) // validation({...form, [property]:value}) // truquito
         console.log(errors)
     }
 
 
-    const submitHandler=(event)=>{
+    const submitHandler=async(event)=>{
         event.preventDefault();
         console.log(form)
+        const response = await axios.post(URL, form)
+        console.log(response?.data , 'SE CREO EXITOSAMENTE')  
+
 
     }
 
@@ -59,38 +66,44 @@ const Form = ()=>{
             <h1>crear Pokemon </h1>
             <div>
                 <label>Nombre: </label>
-                <input type="text" name='name' value={form.name} onChange={handlerInputChange}></input>
+                <input type="text" placeholder="Su nombre" name='name' value={form.name} onChange={handlerInputChange}></input>
                 {errors.name && <span>{errors.name}</span>}
             </div>
-            <div>
+            {/* <div>
                 <label>Image</label>
                 <input type="text" name='image' value={form.image}></input>
-            </div>
+            </div> */}
             <div>
                 <label>Vida: </label>
-                <input type="text" name='hp' value={form.hp} onChange={handlerInputChange}></input>
+                <input type="text" placeholder="Su vida" name='hp' value={form.hp} onChange={handlerInputChange}></input>
                 {errors.hp && <span>{errors.hp}</span>}
             </div>
             <div>
                 <label>Ataque: </label>
-                <input type="text" name='attack' value={form.attack} onChange={handlerInputChange}></input>
+                <input type="text" placeholder="Su ataque" name='attack' value={form.attack} onChange={handlerInputChange}></input>
+                {errors.attack && <span>{errors.attack}</span>}
             </div>
             <div>
                 <label>Defensa: </label>
-                <input type="text" name='defense' value={form.defense} onChange={handlerInputChange}></input>
+                <input type="text" placeholder="Su defensa" name='defense' value={form.defense} onChange={handlerInputChange}></input>
+                {errors.defense && <span>{errors.defense}</span>}
             </div>
             <div>
                 <label>Velocidad: </label>
-                <input type="text" name='speed' value={form.speed} onChange={handlerInputChange}></input>
+                <input type="text" placeholder="Su velocidad" name='speed' value={form.speed} onChange={handlerInputChange}></input>
+                {errors.speed && <span>{errors.speed}</span>}
             </div>
             <div>
                 <label>Altura: </label>
-                <input type="text" name='height' value={form.height} onChange={handlerInputChange}></input>
+                <input type="text" placeholder="Su altura" name='height' value={form.height} onChange={handlerInputChange}></input>
+                {errors.height && <span>{errors.height}</span>}
             </div>
             <div>
                 <label>Peso: </label>
-                <input type="text" name='weight' value={form.weight} onChange={handlerInputChange}></input>
+                <input type="text" placeholder="Su Peso" name='weight' value={form.weight} onChange={handlerInputChange}></input>
+                {errors.weight && <span>{errors.weight}</span>}
             </div>
+            {/* FALTA TERMINAR TYPE E IMAGENES */}
             <div>
                 <select>
                     <option>tipo</option>
