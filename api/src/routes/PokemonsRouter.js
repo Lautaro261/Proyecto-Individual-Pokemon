@@ -10,9 +10,9 @@ pokesRouter.get("/", handlerGetPokemons);  // ENTRA http://localhost:3001/pokemo
 
 pokesRouter.get("/:idPoke", handlerGetPokemonByID);
 
-pokesRouter.post("/", handlerPostPokemonDB);
+pokesRouter.post("/", handlerPostPokemonDB); //PENDIENTE A CORRECCION !!!
 
-// pokesRouter.get("/type", handlerGetType);
+
 
 
 module.exports = pokesRouter;

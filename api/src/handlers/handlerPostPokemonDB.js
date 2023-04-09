@@ -17,9 +17,10 @@ const handlerPostPokemonDB = async (req, res) => {
       weight
     );
     const typ = await postType(type);
+    // console.log(typ)                            TENGO QUE RELACIONAR EL POKEMON CON SU TYPE FALTA!!!
     const newPokemon = {...poke};
 
-    console.log(newPokemon)
+   // console.log(newPokemon)
     res.status(201).json(newPokemon);
 
   } catch (error) {

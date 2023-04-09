@@ -1,7 +1,7 @@
 const { Pokemon } = require('../../db')
 
 const getAllPokemonsDB = async (req, res)=>{
-    try {
+    //try {
         const responseDB = await Pokemon.findAll()
         const pokemonsDB = responseDB.map((char)=>{
             return{
@@ -18,10 +18,10 @@ const getAllPokemonsDB = async (req, res)=>{
         })
         return pokemonsDB;
         /* res.status(200).json(pokeDB) */
-    } catch (error) {
+    //} catch (error) {
         /* res.status(404).json(error.message) */
-        console.log(error)
-    }
+       // console.log(error)
+   // }
 
 }
 

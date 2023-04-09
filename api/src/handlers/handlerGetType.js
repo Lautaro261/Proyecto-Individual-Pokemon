@@ -21,7 +21,7 @@ const handlerGetType = async(req, res)=>{
             })) 
             //const exito = await Type.findAll() // ARRAY [{},{},{}]
             /* console.log(exito) */
-            res.status(200).json('ok')
+            res.status(200).json({message: 'Se cargaron correctamente los TIPOS de pokemons obtenidos de API en la DB'})
 
             
         }else{

@@ -2,12 +2,14 @@ const URL = 'https://pokeapi.co/api/v2/pokemon';
 const axios = require('axios')
 
 const getPokemonByNameAPI = async(req, res)=>{
-    try {
+   // try {
         const {name} = req.query
-        console.log(name)
-        console.log('ESTOY ENTRANDO EN API')
-        const pokeRes = await axios.get(`${URL}/${name}`) // await axios.all([getDBPokemonsByName().getAPIPokemonByName()])
+        const lowerCaseName = name.toLowerCase();
+        //console.log(lowerCaseName)
+        //console.log('ESTOY ENTRANDO EN API')
+        const pokeRes = await axios.get(`${URL}/${lowerCaseName}`) // await axios.all([getDBPokemonsByName().getAPIPokemonByName()])
         
+
         const pokemon = {
             id: pokeRes.data.id,
             name: pokeRes.data.name,
@@ -21,9 +23,9 @@ const getPokemonByNameAPI = async(req, res)=>{
         }
         // console.log(pokemon);
        return pokemon; 
-    } catch (error) {
-        res.status(400).send('mal get name de api')
-    }
+    //} catch (error) {
+       // res.status(400).json({message: `No se contro pokemon con el nombre : ${name}`})
+   // }
 }
 
 module.exports = getPokemonByNameAPI;

@@ -1,10 +1,10 @@
 const axios = require('axios');
 const URL = 'https://pokeapi.co/api/v2/pokemon';
-const limit = '?limit=12'
+const limit = '?limit=40'
 
 
 const getALLPokemonsAPI = async(req, res)=>{
-    try {
+   // try {
         const responseAPI = await axios.get(`${URL}${limit}`)
         const array1results = responseAPI.data.results  // es una array 
         //console.log(`ESTO ES array1results ${array1results}`)
@@ -36,10 +36,10 @@ const getALLPokemonsAPI = async(req, res)=>{
         // res.status(200).json(pokemons) 
         return pokemonsAPI
 
-    } catch (error) {
+   // } catch (error) {
         // res.status(400).json(error.message) 
-        console.log(error)
-    }
+   //     console.log(error)
+   // }
 }
 
 module.exports = getALLPokemonsAPI;

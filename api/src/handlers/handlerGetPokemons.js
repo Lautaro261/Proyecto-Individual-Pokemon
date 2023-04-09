@@ -16,26 +16,35 @@ const handlerGetPokemons = async(req, res)=>{
             const allPokemons = [... pokemonsDB, ...pokemonsAPI]
             res.status(200).json(allPokemons)
         } catch (error) {
-            res.status(403).json(error.message)
+            res.status(404).json(error.message)
         }
     }
 
 //--------------------------GET POR NAME-----------------------------------------------------------
     
     if(req.query.name !==undefined){
-
+        const {name} = req.query;
         try {
            let pokemonByName = await getPokemonByNameDB(req, res)
-           console.log(typeof(pokemonByName))
-           console.log(pokemonByName)
+           // console.log(typeof(pokemonByName))
+           // console.log(pokemonByName)
            if(pokemonByName === null /*Object.keys(pokemonByName).length === 0 */){
              pokemonByName = await getPokemonByNameAPI(req, res)
            }
            // console.log(pokemonByName)
+           /* if(pokemonByName === nul ){
+            throw new Error('NO SE ENCONTRO EL POKEMON POR SU NOMBRE ')
+           } */
           res.status(200).json(pokemonByName)
+
+         /*  if (pokemonByName === null || Object.keys(pokemonByName).length === 0) {
+            res.status(404).json({ message: 'NO SE ENCONTRO EL POKEMON POR SU ' });
+        } else {
+            res.status(200).json(pokemonByName);
+        } */
          
         } catch (error) {
-            res.status(404).json('NO se encontro POKEMON')
+            res.status(404).json({message: `No se encontró el pokemon con el nombre ${name}`})
         }
         
     }
