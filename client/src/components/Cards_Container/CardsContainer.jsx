@@ -26,6 +26,7 @@ const Cards =(/* {pokemons} */)=>{
                 type={char.type}
                 />)
             })}
+           
         </div>
     )
 }

@@ -1,7 +1,8 @@
 import { useEffect } from "react";
-import Cards from "../../components/Cards_Container/CardsContainer";
 import { useDispatch } from "react-redux";
 import { getAllPokemons } from "../../redux/actions";
+import Cards from "../../components/Cards_Container/CardsContainer";
+import Pagination from "../../components/Pagination/Pagination";
 
 const Home = ()=>{
     const dispatch = useDispatch();
@@ -14,8 +15,8 @@ const Home = ()=>{
 
     return (
         <div>
-            {/* <p>ESTAMOS EN HOME </p> */}
             <Cards />
+            <Pagination/>
         </div>
     )
 };
