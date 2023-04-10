@@ -25,7 +25,11 @@ const Detail =()=>{
             <p>Velocidad: {pokemon.speed}</p>
             <p>Altura: {pokemon.height}</p>
             <p>Peso: {pokemon.weight}</p>
-            {/* <p>tipo: {pokemon.type}</p> */}
+            { pokemon.types && pokemon.types.map((type, index)=>{
+                return (
+                    <p key={index}>{type}</p>
+                )
+            })}
             <Link to='/home'>
             <button>back home</button>
             </Link>

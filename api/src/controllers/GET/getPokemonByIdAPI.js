@@ -19,6 +19,7 @@ const getPokemonByIdAPI = async (req, res)=>{
         speed: pokeData.stats[5].base_stat,
         height: pokeData.height,
         weight: pokeData.weight, 
+        types: pokeData.types.map((type)=>type.type.name)
     } 
     
     return pokemon

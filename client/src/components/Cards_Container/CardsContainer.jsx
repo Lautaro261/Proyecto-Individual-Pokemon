@@ -34,7 +34,7 @@ const Cards =(/* {pokemons} */)=>{
                 id={char.id}
                 name={char.name}
                 image={char.image}
-                type={char.type}
+                types={char.types}
                 />)
             }).slice(firstIndex, lastIndex)}
            

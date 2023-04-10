@@ -19,6 +19,8 @@ const handlerPostPokemonDB = async (req, res) => {
    // const typ = await postType(types);
     // console.log(typ)                            TENGO QUE RELACIONAR EL POKEMON CON SU TYPE FALTA!!!
     const typesArray = types.map(type => type.name)
+
+    //console.log(types)
     const newPokemon = {
       name: poke.name,
       image: poke.image,
@@ -28,11 +30,14 @@ const handlerPostPokemonDB = async (req, res) => {
       speed: poke.speed,
       height: poke.height,
       weight: poke.weight,
-     // types: typesArray,
+      //types: typesArray,
      };
 
    // console.log(newPokemon)
-    res.status(201).json(newPokemon);
+    res.status(201).json({
+      message: 'Se creó correctamente',
+      newPokemon: newPokemon,
+    });
 
   } catch (error) {
     res.status(400).json(error.message)

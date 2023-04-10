@@ -4,7 +4,7 @@ const { Type } = require('../../db');
 const getAllPokemonsDB = async (req, res)=>{
     //try {
         const responseDB = await Pokemon.findAll({
-            include: [{ model: Type, attributes: ['name', 'id'], through: { attributes: [] } }],
+            include: [{ model: Type, attributes: ['name'], through: { attributes: [] } }],
             
             }
         )
@@ -19,10 +19,10 @@ const getAllPokemonsDB = async (req, res)=>{
                 speed: char.speed,
                 height: char.height,
                 weight: char.weight,
-                types: char.types 
+                types: char.types.map(type => type.name) 
             }
         })
-        console.log(pokemonsDB)
+        //console.log(pokemonsDB)
         return pokemonsDB;
         /* res.status(200).json(pokeDB) */
     //} catch (error) {
