@@ -1,10 +1,9 @@
 const postPokemon = require('../controllers/POST/postPokemon');
-const postType = require('../controllers/POST/postType');
 
 
 const handlerPostPokemonDB = async (req, res) => {
   try {
-    const { name, image, hp, attack, defense, speed, height, weight, type } = req.body;
+    const { name, image, hp, attack, defense, speed, height, weight, types } = req.body;
 
     const poke = await postPokemon(
       name,
@@ -14,11 +13,23 @@ const handlerPostPokemonDB = async (req, res) => {
       defense,
       speed,
       height,
-      weight
+      weight,
+      types,
     );
-    const typ = await postType(type);
+   // const typ = await postType(types);
     // console.log(typ)                            TENGO QUE RELACIONAR EL POKEMON CON SU TYPE FALTA!!!
-    const newPokemon = {...poke};
+    const typesArray = types.map(type => type.name)
+    const newPokemon = {
+      name: poke.name,
+      image: poke.image,
+      hp: poke.hp,
+      attack: poke.attack,
+      defense: poke.defense,
+      speed: poke.speed,
+      height: poke.height,
+      weight: poke.weight,
+     // types: typesArray,
+     };
 
    // console.log(newPokemon)
     res.status(201).json(newPokemon);

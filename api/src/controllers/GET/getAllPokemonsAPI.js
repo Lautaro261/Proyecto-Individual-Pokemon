@@ -1,6 +1,6 @@
 const axios = require('axios');
 const URL = 'https://pokeapi.co/api/v2/pokemon';
-const limit = '?limit=10271'
+const limit = '?limit=5' //10271
 
 
 const getALLPokemonsAPI = async(req, res)=>{
@@ -31,6 +31,7 @@ const getALLPokemonsAPI = async(req, res)=>{
                 speed: pokemon.stats[5].base_stat,
                 height: pokemon.height,
                 weight: pokemon.weight,
+                types: pokemon.types.map((type)=>type.type.name)
             }
         })
         // res.status(200).json(pokemons) 
