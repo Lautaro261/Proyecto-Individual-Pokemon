@@ -40,10 +40,14 @@ const Pagination = ({pokemonPerPage,currentPage,setcurrentPage})=>{
         <div>
             <button onClick={onClickPrevious} /* FALTA LOGICA PARA DESACTIVAR EN pageNumber=0*/>Previous</button>
             <ul>
-                {pageNumber.map((number)=>{
+                {pageNumber.map((number, index)=>{
                     return (
                        /*  <li key={number}> */
-                            <button value={number} onClick={onClickCurrent}>{number}</button>
+                            <button 
+                            key={index}
+                            value={number} 
+                            onClick={onClickCurrent}
+                            >{number}</button>
                         /* </li> */
                     )
                 })}

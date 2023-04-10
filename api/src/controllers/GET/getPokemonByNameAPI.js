@@ -2,6 +2,8 @@ const URL = 'https://pokeapi.co/api/v2/pokemon';
 const axios = require('axios')
 
 const getPokemonByNameAPI = async(req, res)=>{
+
+   console.log('entre en getPokemonByNameAPI :D')
    // try {
         const {name} = req.query
         const lowerCaseName = name.toLowerCase();
@@ -20,6 +22,8 @@ const getPokemonByNameAPI = async(req, res)=>{
             speed:pokeRes.data.stats[5].base_stat,
             height: pokeRes.data.height,
             weight: pokeRes.data.weight, 
+            types: pokeRes.data.types.map((type)=>type.type.name)
+
         }
         // console.log(pokemon);
        return pokemon; 

@@ -10,9 +10,9 @@ const Card =({id,name,image,types})=>{
             <Link to={`/detail/${id}`}>
              <p>nombre: {name}</p>
             </Link>
-            {types.map((type)=>{
+            {types.map((type, index)=>{
                 return (
-                    <p>{type}</p>
+                    <p key={index}>{type}</p>
                 )
             })}
             <img src={image} alt='img'/>

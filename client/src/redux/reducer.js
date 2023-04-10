@@ -1,18 +1,21 @@
 import { 
     GET_ALL_POKEMONS, 
     GET_POKEMON_ID, 
-    GET_POKEMON_BY_NAME, 
+    GET_POKEMON_BY_NAME,
+    GET_ALL_TYPES,
     FILTER_ID, 
+    FILTER_TYPES,
+    CLEAR_FILTER,
     ORDER,
-    ORDER_ID
 } from "./actions";
 //import handlerPayload from "./helpers/handlerPayload";
 
 const initialState={
     allPokemons:[],
     detailPokemon:{},
-    auxiliar:[],
-    //searchPokemon:{},
+    allTypes:[],
+    filterPokemons:[],
+    
 }
 
 const rootReducer=(state=initialState, action)=>{
@@ -25,11 +28,27 @@ const rootReducer=(state=initialState, action)=>{
             return {...state, detailPokemon: action.payload}
 
         case GET_POKEMON_BY_NAME:
+            console.log(action.payload)
             return {...state, allPokemons: action.payload}
+
+        case GET_ALL_TYPES: 
+        return{...state, allTypes: action.payload}
         
         case FILTER_ID:
            // return{...state, myfavorites: action.payload // state.myfavorites.filter((char)=>char.id!==action.payload)
-            return {...state, allPokemons: state.allPokemons.filter((char)=> char.id !== action.payload)}
+           console.log(action.payload, 'ESTO ES LINE 32')
+            return {...state, allPokemons: state.allPokemons.filter((char)=> typeof(char.id) === action.payload)}
+            // SI ES VERDAD AGREGA AL ARRAY Y RETORNA                                             string
+
+        case FILTER_TYPES:
+            //console.log(typeof(action.payload), action.payload)  // 'normal'
+            //console.log(state.allPokemons[0].types.includes(action.payload))
+            
+            return{...state,  filterPokemons: state.allPokemons.filter((char)=> char.types.includes(action.payload)) }
+
+
+        case CLEAR_FILTER: 
+            return {...state, filterPokemons: []}
 
         case ORDER:
             // LOGICA
@@ -83,7 +102,7 @@ const rootReducer=(state=initialState, action)=>{
 
             return { ...state, allPokemons: [...state.allPokemons] }; 
 
-        case ORDER_ID:
+       /*  case ORDER_ID:
             if(action.payload === 'id'){
                 state.allPokemons.sort((a,b)=>{
                     if(a.id > b.id){
@@ -96,7 +115,7 @@ const rootReducer=(state=initialState, action)=>{
                 })
             }
             return {...state, allPokemons: [...state.allPokemons] };
-
+ */
         default:
             return {...state}
     }

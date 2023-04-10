@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getAllPokemons } from "../../redux/actions";
+import { getAllPokemons, getAllTypes  } from "../../redux/actions";
 import Cards from "../../components/Cards_Container/CardsContainer";
 
 
@@ -10,7 +10,8 @@ const Home = ()=>{
 
 
     useEffect(()=>{
-        dispatch(getAllPokemons());  
+        dispatch(getAllPokemons());
+        dispatch(getAllTypes());
     },[dispatch])
 
     return (
