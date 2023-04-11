@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getPokemonID, clearDetail } from "../../redux/actions";
 import { Link } from 'react-router-dom'
+import style from "./Detail.module.css"
 
 const Detail =()=>{
     const dispatch = useDispatch();
@@ -17,18 +18,18 @@ const Detail =()=>{
     },[dispatch,id])
     
     return (
-        <div>
+        <div className={style.detail}>
             {Object.keys(pokemon).length === 0 ? <h2>Cargando...</h2>: null}
-            <p>DETALLE DE POKEMON</p>
+
+            <h2>{pokemon.name} </h2>
             <p>id: {pokemon.id}</p>
-            <p>nombre: {pokemon.name} </p>
             <img src={pokemon.image} alt="pokex"/>
-            <p>vida: {pokemon.hp}</p>
+            <p>HP: {pokemon.hp}</p>
             <p>Ataque: {pokemon.attack}</p>
             <p>Defensa: {pokemon.defense}</p>
             <p>Velocidad: {pokemon.speed}</p>
-            <p>Altura: {pokemon.height}</p>
-            <p>Peso: {pokemon.weight}</p>
+            <p>Altura: {pokemon.height/10} m</p>
+            <p>Peso: {pokemon.weight/10} kg</p>
             { pokemon.types && pokemon.types.map((type, index)=>{
                 return (
                     <p key={index}>{type}</p>

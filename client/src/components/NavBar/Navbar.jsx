@@ -11,6 +11,9 @@ const NavBar = ()=>{
           <div>
             <Link to='/form'>Create Pokemon!</Link>
           </div>
+          <div>
+            <Link to='/'>Log out</Link>
+          </div>
 
         </div>
     )

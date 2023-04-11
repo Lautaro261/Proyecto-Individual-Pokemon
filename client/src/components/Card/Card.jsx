@@ -8,14 +8,16 @@ const Card =({id,name,image,types})=>{
         <div className={style.card}>
 
             <Link to={`/detail/${id}`}>
-             <p>nombre: {name}</p>
+             <h2>{name}</h2>
             </Link>
+            
+            <img src={image} alt='img'/>
+
             {types.map((type, index)=>{
                 return (
-                    <p key={index}>{type}</p>
+                    <h4 key={index}>{type}</h4>
                 )
             })}
-            <img src={image} alt='img'/>
 
 
         </div>

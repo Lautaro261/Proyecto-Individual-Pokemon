@@ -15,3 +15,11 @@
     /* width: fit-content; */
    /*  flex-wrap:wrap;   */
 }
+
+.card h2 {
+    color: antiquewhite;
+}
+
+.card a {
+    text-decoration: none;
+}

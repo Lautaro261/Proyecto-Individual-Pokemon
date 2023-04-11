@@ -1,0 +1,8 @@
+.detail{
+    background-color: rgb(44, 3, 49);
+}
+
+
+.detail p, h2{
+    color: white;
+}
