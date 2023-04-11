@@ -4,7 +4,7 @@ import validatePropertyValue from "./validatePropertyValue";
 import { useSelector } from "react-redux";
 
 
-const urlImage = 'https://raw.githubusercontent.com/Lautaro261/Proyecto-Individual-Pokemon/main/client/src/recursos/ditto-what.gif';
+const urlImage = 'https://raw.githubusercontent.com/Lautaro261/Proyecto-Individual-Pokemon/main/client/src/recursos/defaultCreate.gif';
 const URL = 'http://localhost:3001/pokemons'
 
 const Form = ()=>{
