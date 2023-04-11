@@ -1,21 +1,36 @@
 import { useState } from "react";
 import axios from "axios";
 import validatePropertyValue from "./validatePropertyValue";
+import { useSelector } from "react-redux";
 
+
+const urlImage = 'https://raw.githubusercontent.com/Lautaro261/Proyecto-Individual-Pokemon/main/client/src/recursos/ditto-what.gif';
 const URL = 'http://localhost:3001/pokemons'
 
 const Form = ()=>{
 
+    const PokemonFail = {
+		name: "komari",
+		image: urlImage,
+		hp: "1",
+		attack: "800",
+		defense: "3",
+		speed: "4",
+		height: "9",
+		weight: "15",
+		types: [7,8]
+	}
+
     const [form, setForm] = useState({
         name:'',
-        image:'',
+        image:urlImage,
         hp:'',
         attack:'',
         defense:'',
         speed:'',
         height:'',
         weight:'',
-        type:'', // tiene que ser un array []
+        types:[], // tiene que ser un array []
     })
 
      const [errors, setErrors]=useState({
@@ -27,14 +42,21 @@ const Form = ()=>{
         speed:'',
         height:'',
         weight:'',
-        type:'',
+        types:'',
     })
- 
 
+    const allTypes = useSelector(state=> state.allTypes) 
+ 
+/* 
     const handlerInputChange =(event)=>{
         const value = event.target.value;
         const property = event.target.name;
         console.log(`ACTUALIZADO soy value ${value} y yo property ${property}`)
+
+        if(property === 'types'){
+            console.log('si es igual ')
+
+        }
 
          // actualiza el estado de form
         //setForm((prevForm) => ({ ...prevForm, [property]: value }));
@@ -46,24 +68,85 @@ const Form = ()=>{
         setErrors({...errors, [property]: validatePropertyValue(property, value)})
         //setErrors(validation({...form, [property]: value })) // validation({...form, [property]:value}) // truquito
         console.log(errors)
-    }
+    } */
 
+    const handlerInputChange =(event)=>{
+        const value = event.target.value;
+        const property = event.target.name;
+
+        console.log(value)
+    
+        if(property === 'types'){
+            if(!form.types.includes(value)){
+                if(form.types.length < 2) { // verifico que no haya mas de 2 elementos en el array
+                           // si el valor no esta en el array y no se supera el limite, agregalo
+                    setForm({...form, types: form.types.concat(value)});
+                }
+            } else {
+                 // si el valor ya esta en el array, elimina el valor existente y agregalo al nuevo
+                const filteredTypes = form.types.filter(type => type !== value);
+                setForm({...form, types: filteredTypes.concat(value)});
+            }
+        } else {
+            setForm({...form, [property]:value});
+        }
+    
+        setErrors({...errors, [property]: validatePropertyValue(property, value)});
+    }
 
     const submitHandler=async(event)=>{
         event.preventDefault();
         console.log(form)
-        const response = await axios.post(URL, form)
+        console.log(PokemonFail)
+         const response = await axios.post(URL, PokemonFail)
         console.log(response?.data , 'SE CREO EXITOSAMENTE')  
 
 
     }
 
 
-
-
     return (
+        <div>
         <form onSubmit={submitHandler}>
             <h1>crear Pokemon </h1>
+            <div>
+                 <img src={urlImage} alt='create'/>
+            </div>
+            <div>
+                {form.types.length < 2 ? <span>Puedes agregar hasta dos tipos</span> :null}
+                {form.types[0] ? <p>Elegiste {form.types[0]}</p> : null}
+                {form.types[1] ? <p>Elegiste {form.types[1]}</p> : null}
+                <select onChange={handlerInputChange} name='types'>
+                    <option>tipo</option>
+                    {allTypes.map((type, index)=>{
+                        return(
+                            <option key={index} value={type.id} >{type.name}</option>
+                        )
+                    })}
+                </select>
+             {/*    <select>
+                    <option>tipo</option>
+                    {allTypes.map((type, index)=>{
+                        console.log(allTypes.name)
+                        return(
+                            <option key={index} value={type.name} name='types'>{type.name}</option>
+                        )
+                    })}
+                </select> */}
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
             <div>
                 <label>Nombre: </label>
                 <input type="text" placeholder="Su nombre" name='name' value={form.name} onChange={handlerInputChange}></input>
@@ -103,45 +186,18 @@ const Form = ()=>{
                 <input type="text" placeholder="Su Peso" name='weight' value={form.weight} onChange={handlerInputChange}></input>
                 {errors.weight && <span>{errors.weight}</span>}
             </div>
-            {/* FALTA TERMINAR TYPE E IMAGENES */}
-            <div>
-                <select>
-                    <option>tipo</option>
-                    <option>a</option>
-                    <option>b</option>
-                    <option>c</option>
-                </select>
-            </div>
+            
+
+
+
+
+
             <button type="submit">submit</button>
         </form>
+        
+        </div>
+        
     )
 }
 
 export default Form;
-
-/* Nombre.
-Imagen.
-Vida.
-Ataque.
-Defensa.
-Velocidad (si tiene).
-Altura (si tiene).
-Peso (si tiene).
-Posibilidad de seleccionar/agregar varios tipos en simultáneo.
-Botón para crear el nuevo pokemon. 
-
-
-{
-	"name": "pipi",
-	"type" : "agua",
-	"image" : "tukituki.com",
-	"hp": 1,
-	"attack": 2,
-	"defense": 3,
-	"speed": "4",
-	"height": "9",
-	"weight" : "15"
-	
-}
-
-*/

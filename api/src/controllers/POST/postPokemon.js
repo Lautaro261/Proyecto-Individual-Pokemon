@@ -11,7 +11,7 @@ const postPokemon = async(name, image, hp, attack, defense, speed, height, weigh
     //console.log( typesByDB)
     await newPokemon.addType(typesByDB)
 
-    //console.log(newPokemon)
+    console.log(newPokemon)
     return newPokemon
 };
 // ariel orm 1:20 

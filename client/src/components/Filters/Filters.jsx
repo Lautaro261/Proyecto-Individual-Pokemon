@@ -67,7 +67,7 @@ const Filters =()=>{
             <div>
             <select onChange={(event)=>handlerSelectFilterTypes(event)}> 
                 <option value='default'>Filtros Por tipos</option>    
-                {allTypes.map((type, index)=>{
+                {allTypes?.map((type, index)=>{
                     return (
                         <option key={index} value={type?.name}>{type?.name}</option>
                     )
@@ -79,7 +79,7 @@ const Filters =()=>{
             <div>
                 <select onChange={(event)=>handlerSelectFilterTypes(event)}> 
                     <option value='default'>Filtros Por tipos</option>    
-                    {allTypes.map((type, index)=>{
+                    {allTypes?.map((type, index)=>{
                         return (
                             <option key={index} value={type?.name}>{type?.name}</option>
                         )
