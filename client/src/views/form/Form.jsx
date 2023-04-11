@@ -76,16 +76,24 @@ const Form = ()=>{
 
         console.log(value)
     
-        if(property === 'types'){
-            if(!form.types.includes(value)){
+        if(property === 'types'){                                    //'normal'
+            if(!form.types.includes(value)){  // ¿No types= [] incluye(value)? false o true
+
+
                 if(form.types.length < 2) { // verifico que no haya mas de 2 elementos en el array
-                           // si el valor no esta en el array y no se supera el limite, agregalo
-                    setForm({...form, types: form.types.concat(value)});
+                           //  value no esta en el array y no se supera el limite?  agregalo
+                           console.log(value, 'Me agregaron, estoy en linea 85')
+                    setForm({...form, types: form.types.concat(parseInt(value))});
                 }
+
+
+
             } else {
-                 // si el valor ya esta en el array, elimina el valor existente y agregalo al nuevo
-                const filteredTypes = form.types.filter(type => type !== value);
-                setForm({...form, types: filteredTypes.concat(value)});
+                         //  value ya esta en el array? elimina el value existente y agregalo al nuevo
+                         console.log(value, 'si ya existo. Linea 93')
+                 const filteredTypes = form.types.filter(type => type !== value);
+
+                setForm({...form, types: filteredTypes.concat(value)}); 
             }
         } else {
             setForm({...form, [property]:value});
@@ -98,7 +106,7 @@ const Form = ()=>{
         event.preventDefault();
         console.log(form)
         console.log(PokemonFail)
-         const response = await axios.post(URL, PokemonFail)
+         const response = await axios.post(URL, form)
         console.log(response?.data , 'SE CREO EXITOSAMENTE')  
 
 

@@ -1,5 +1,6 @@
 import { useEffect } from "react"
 import { useSelector } from "react-redux"
+import style from './Pagination.module.css';
 
 const Pagination = ({pokemonPerPage,currentPage,setcurrentPage})=>{
 
@@ -37,13 +38,14 @@ const Pagination = ({pokemonPerPage,currentPage,setcurrentPage})=>{
     },[allPokemons])
 
     return(
-        <div>
-            <button onClick={onClickPrevious} /* FALTA LOGICA PARA DESACTIVAR EN pageNumber=0*/>Previous</button>
-            <ul>
+        <div className={style.pagination}>
+            <button className={currentPage===1 ? style.disabled : style.enabled } onClick={onClickPrevious}>Anterior</button>
+            <ul className={style.ul}>
                 {pageNumber.map((number, index)=>{
                     return (
                        /*  <li key={number}> */
-                            <button 
+                            <button
+                            className={`${number === currentPage ? style.currentButton : style.notCurrentButton}`} 
                             key={index}
                             value={number} 
                             onClick={onClickCurrent}
@@ -52,7 +54,7 @@ const Pagination = ({pokemonPerPage,currentPage,setcurrentPage})=>{
                     )
                 })}
             </ul>
-            <button onClick={onClickNext}/*FALTA LOGICA PARA DESACTIVAR EN pageNumber=fin*/>Netx</button>
+            <button className={currentPage >= pageNumber.length ? style.disabled : style.enabled } onClick={onClickNext}>Siguiente</button>
         </div>
     )
 }

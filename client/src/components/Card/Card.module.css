@@ -1,15 +1,17 @@
 .card{
     background-color: rgb(20, 87, 141);
     border: 1px solid rgb(10, 39, 43) ;
-    background-color: rgba(148, 20, 94, 0.664);
-    margin: 50px;
-    width: fit-content;
-    padding: 1em;
     border-radius: 10px;
     -webkit-box-shadow: 10px 13px 31px 5px rgba(0,0,0,0.75);
     -moz-box-shadow: 10px 13px 31px 5px rgba(0,0,0,0.75);
     box-shadow: 10px 13px 31px 5px rgba(0,0,0,0.75);
-    flex-wrap:wrap; 
-    flex-direction: column;
+
+    margin: 50px;
+    padding: 1em;
+
     display: flex;
+    flex-direction: column;  
+    /* justify-content: space-between;  */
+    /* width: fit-content; */
+   /*  flex-wrap:wrap;   */
 }

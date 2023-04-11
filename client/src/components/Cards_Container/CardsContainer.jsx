@@ -34,9 +34,9 @@ const Cards =(/* {pokemons} */)=>{
    //console.log('Rendering Cards with allPokemons:', allPokemons)
    
     return (
-        <div>
+        <div className={style.contenedor}>
          <div className={style.cards} >
-            {/* <p>Cards</p> */}
+
             {allPokemons.length === 0 && <span>Cargando ... </span>}
 
             {filterPokemons.length === 0
