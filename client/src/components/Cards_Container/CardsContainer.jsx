@@ -1,14 +1,13 @@
 import Card from "../Card/Card"
-import {useDispatch, useSelector} from 'react-redux'
+import { useSelector} from 'react-redux'
 import style from './CardsContainer.module.css';
 import { useEffect } from "react";
 import { useState } from "react";
 import Pagination from "../Pagination/Pagination";
-import { getAllPokemons } from "../../redux/actions";
 
 const Cards =(/* {pokemons} */)=>{
     
-    const dispatch = useDispatch()
+    //const dispatch = useDispatch()
     const allPokemons = useSelector(state=>state.allPokemons)
     const filterPokemons = useSelector(state=>state.filterPokemons)
     const [pokemonPerPage, setPokemonPerPage ]= useState(12)

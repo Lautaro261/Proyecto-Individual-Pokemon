@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 import { OrderName, clearAllTypes, filterID, filterTypes, getAllPokemons } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
+import style from "./Filters.module.css";
 
 
 const Filters =()=>{
 
     const allTypes = useSelector(state=>state.allTypes) 
-    const filterPokemons= useSelector(state=> state.filterPokemons)
+   // const filterPokemons= useSelector(state=> state.filterPokemons)
     const dispatch = useDispatch()
 
     const hanlderSelect1 = (event)=>{
@@ -48,7 +49,7 @@ const Filters =()=>{
 
 
     return (
-        <div>
+        <div className={style.filters}>
             <div>
             <select onChange={(event)=>hanlderSelect1(event)}>
                 <option value='default' >ordenar</option>
@@ -74,22 +75,6 @@ const Filters =()=>{
                 })}
                 
             </select>
-            </div>
-            { filterPokemons.length !== 0 ?
-            <div>
-                <select onChange={(event)=>handlerSelectFilterTypes(event)}> 
-                    <option value='default'>Filtros Por tipos</option>    
-                    {allTypes?.map((type, index)=>{
-                        return (
-                            <option key={index} value={type?.name}>{type?.name}</option>
-                        )
-                    })}
-                </select>
-            </div> :
-            null
-        }
-
-            <div>
                 <button onClick={handlerReset}>reset</button>
             </div>
         </div>

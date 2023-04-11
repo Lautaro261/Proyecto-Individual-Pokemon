@@ -9,17 +9,6 @@ const URL = 'http://localhost:3001/pokemons'
 
 const Form = ()=>{
 
-    const PokemonFail = {
-		name: "komari",
-		image: urlImage,
-		hp: "1",
-		attack: "800",
-		defense: "3",
-		speed: "4",
-		height: "9",
-		weight: "15",
-		types: [7,8]
-	}
 
     const [form, setForm] = useState({
         name:'',
@@ -47,28 +36,7 @@ const Form = ()=>{
 
     const allTypes = useSelector(state=> state.allTypes) 
  
-/* 
-    const handlerInputChange =(event)=>{
-        const value = event.target.value;
-        const property = event.target.name;
-        console.log(`ACTUALIZADO soy value ${value} y yo property ${property}`)
 
-        if(property === 'types'){
-            console.log('si es igual ')
-
-        }
-
-         // actualiza el estado de form
-        //setForm((prevForm) => ({ ...prevForm, [property]: value }));
-
-         // utiliza la versión actualizada de form en validation
-        //validation({ ...form, [property]: value }, errors, setErrors);
-
-        setForm({...form, [property]:value})
-        setErrors({...errors, [property]: validatePropertyValue(property, value)})
-        //setErrors(validation({...form, [property]: value })) // validation({...form, [property]:value}) // truquito
-        console.log(errors)
-    } */
 
     const handlerInputChange =(event)=>{
         const value = event.target.value;
@@ -105,9 +73,35 @@ const Form = ()=>{
     const submitHandler=async(event)=>{
         event.preventDefault();
         console.log(form)
-        console.log(PokemonFail)
          const response = await axios.post(URL, form)
-        console.log(response?.data , 'SE CREO EXITOSAMENTE')  
+        //console.log(response?.data , 'SE CREO EXITOSAMENTE')  
+        if(response?.data){
+            console.log(response.data, 'SE CREO EXITOSAMENTE')
+            setForm({
+                name:'',
+                image:urlImage,
+                hp:'',
+                attack:'',
+                defense:'',
+                speed:'',
+                height:'',
+                weight:'',
+                types:[],
+            })
+            setErrors({
+                name:'',
+                image:'',
+                hp:'',
+                attack:'',
+                defense:'',
+                speed:'',
+                height:'',
+                weight:'',
+                types:'',
+            })
+
+            alert('Tu pokemon fue creado! Felicidades!')
+        }
 
 
     }
@@ -116,31 +110,24 @@ const Form = ()=>{
     return (
         <div>
         <form onSubmit={submitHandler}>
-            <h1>crear Pokemon </h1>
+            <h1>create your Pokemon!</h1>
             <div>
                  <img src={urlImage} alt='create'/>
             </div>
             <div>
                 {form.types.length < 2 ? <span>Puedes agregar hasta dos tipos</span> :null}
-                {form.types[0] ? <p>Elegiste {form.types[0]}</p> : null}
-                {form.types[1] ? <p>Elegiste {form.types[1]}</p> : null}
-                <select onChange={handlerInputChange} name='types'>
-                    <option>tipo</option>
+                {form.types[0] ? <p>Elegiste {allTypes.find(type => type.id === form.types[0]).name}</p> : null}
+                {form.types[1] ? <p>Elegiste {allTypes.find(type => type.id === form.types[1]).name}</p> : null}
+
+                {/* {form.types[1] ? <p>Elegiste {form.types[1]}</p> : null} {/* CAMBIAR ID POR NAME } */}
+                <select onChange={handlerInputChange} name='types' defaultValue={'default'}>
+                    <option value='default'>Elige 1 o 2 tipos</option>
                     {allTypes.map((type, index)=>{
                         return(
                             <option key={index} value={type.id} >{type.name}</option>
                         )
                     })}
                 </select>
-             {/*    <select>
-                    <option>tipo</option>
-                    {allTypes.map((type, index)=>{
-                        console.log(allTypes.name)
-                        return(
-                            <option key={index} value={type.name} name='types'>{type.name}</option>
-                        )
-                    })}
-                </select> */}
             </div>
 
 

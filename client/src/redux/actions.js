@@ -8,7 +8,7 @@ export const FILTER_TYPES = 'FILTER_TYPES';
 export const CLEAR_FILTER = 'CLEAR_FILTER';
 export const ORDER = 'ORDER';
 export const ORDER_ID = 'ORDER_ID';
-
+export const CLEAR_DETAIL= 'CLEAR_DETAIL';
 
 export const getAllPokemons = ()=>{
 
@@ -38,6 +38,14 @@ export const clearAllTypes = ()=>{
     return async function(dispatch){
         return dispatch({
             type: CLEAR_FILTER
+        })
+    }
+}
+
+export const clearDetail=()=>{
+    return async function(dispatch){
+        return dispatch({
+            type: CLEAR_DETAIL
         })
     }
 }

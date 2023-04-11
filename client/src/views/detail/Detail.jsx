@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getPokemonID } from "../../redux/actions";
+import { getPokemonID, clearDetail } from "../../redux/actions";
 import { Link } from 'react-router-dom'
 
 const Detail =()=>{
@@ -11,10 +11,14 @@ const Detail =()=>{
 
     useEffect(()=>{
         dispatch(getPokemonID(id))
+        return ()=>{
+            dispatch(clearDetail())
+        }
     },[dispatch,id])
     
     return (
         <div>
+            {Object.keys(pokemon).length === 0 ? <h2>Cargando...</h2>: null}
             <p>DETALLE DE POKEMON</p>
             <p>id: {pokemon.id}</p>
             <p>nombre: {pokemon.name} </p>
