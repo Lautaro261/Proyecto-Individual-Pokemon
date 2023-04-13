@@ -11,7 +11,7 @@ const NavBar = ()=>{
           </div>
           <div>
           <Link to='/form'>
-              ce<span className={style.highlight}>r</span>ate Pokemon!
+              c<span className={style.highlight}>r</span>eate Pokemon!
             </Link>
           </div>
           <div>
