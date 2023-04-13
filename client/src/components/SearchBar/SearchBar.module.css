@@ -1,3 +1,39 @@
-.searchBar{
-    background-color: rgb(31, 126, 28);
+.searchBarContainer{
+    background-color: pink;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 12px;
+}
+
+.searchBar {
+    border: 1px solid #f73859;
+    background-color: #f05a73;
+    display: flex;
+    gap: 10px;
+}
+
+.searchBar input{
+    border: none;
+    background: none;
+    outline: none;
+    padding: 5px;
+    font-size: 17px;
+    background-color: white;
+}
+.searchBar input:focus {
+    outline: 1px solid #6875d8;
+  }
+
+.searchBar button{
+    
+    border: none;
+    color: #ffffff;
+    background-color:#f05a73 ;
+    
+}
+
+.searchBar button:hover{
+    color: #c2bfbf;
+    background-color: #f73859;
 }

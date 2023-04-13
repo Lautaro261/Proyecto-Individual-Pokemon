@@ -13,7 +13,7 @@ const Filters =()=>{
     const hanlderSelect1 = (event)=>{
         event.preventDefault()
         const value = event.target.value;
-        console.log(value, 'estoy despachando desde filters')
+      //  console.log(value, 'estoy despachando desde filters')
         dispatch(OrderName(value))   
     }
 
@@ -22,51 +22,55 @@ const Filters =()=>{
     const handlerSelectFilters = (event)=>{
         event.preventDefault()
         const value = event.target.value;
-        console.log(value, 'estoy despachando desde filters')
+       // console.log(value, 'estoy despachando desde filters')
         dispatch(filterID(value)) 
     }
 
     const handlerSelectFilterTypes = (event)=>{
         const value = event.target.value
-        console.log(value, 'LINEA 29')
         if( value === 'default'){
             dispatch(getAllPokemons())
         }
-       // dispatch(getAllPokemons())
         dispatch(filterTypes(value))
     }
 
     const handlerReset = ()=>{
-        console.log('me hiciste click')
         dispatch(clearAllTypes())
         dispatch(getAllPokemons())
     }
 
 
     useEffect(()=>{
-        console.log('Filter se montó correctamente', allTypes)
+        //console.log('Filter se montó correctamente', allTypes)
     },[allTypes])
 
 
     return (
         <div className={style.filters}>
-            <div>
-            <select onChange={(event)=>hanlderSelect1(event)}>
-                <option value='default' >ordenar</option>
-              <option value='az'>az</option>
-              <option value='za'>za</option>
-              <option value='ha'>mayor ataque</option>
-              <option value='la'>menor ataque</option>
+
+            <div className={style.orderProp}>
+            <select onChange={(event)=>hanlderSelect1(event)} defaultValue={'default'}>
+              <option value='default' >Order</option>
+              <option value='az'>A-Z</option>
+              <option value='za'>Z-A</option>
+              <option value='ha'>highest attack</option>
+              <option value='la'>lowest attack</option>
             </select>
 
             </div>
-            <div>
-                <button value='string' onClick={(event)=>{handlerSelectFilters(event)}}>Creados</button>
-                <button value='number' onClick={(event)=>{handlerSelectFilters(event)}}>Autenticos</button>
+
+
+
+            <div className={style.orderid}>
+                <button className={style.button1} value='string' onClick={(event)=>{handlerSelectFilters(event)}}>Created</button>
+                <button className={style.button2} value='number' onClick={(event)=>{handlerSelectFilters(event)}}>Authentic</button>
 
             </div>
-            <div>
-            <select onChange={(event)=>handlerSelectFilterTypes(event)}> 
+
+
+
+            <div className={style.filterTypes}>
+            <select  onChange={(event)=>handlerSelectFilterTypes(event)}> 
                 <option value='default'>Filtros Por tipos</option>    
                 {allTypes?.map((type, index)=>{
                     return (
@@ -75,7 +79,11 @@ const Filters =()=>{
                 })}
                 
             </select>
-                <button onClick={handlerReset}>reset</button>
+                
+            </div>
+        
+            <div className={style.reset}>
+                <button onClick={handlerReset}>Reset</button>
             </div>
         </div>
         

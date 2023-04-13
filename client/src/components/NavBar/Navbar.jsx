@@ -3,13 +3,16 @@ import style from './Navbar.module.css';
 
 
 const NavBar = ()=>{
+  
     return (
         <div className={style.nav} >
           <div>
             <Link to='/home'>Home</Link>
           </div>
           <div>
-            <Link to='/form'>Create Pokemon!</Link>
+          <Link to='/form'>
+              ce<span className={style.highlight}>r</span>ate Pokemon!
+            </Link>
           </div>
           <div>
             <Link to='/'>Log out</Link>

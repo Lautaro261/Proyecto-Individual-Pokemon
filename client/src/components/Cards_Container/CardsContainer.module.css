@@ -1,9 +1,8 @@
-.contenedor{
-    background-color: black;
-}
-.cards{
-    background-color: rgb(60, 6, 110);
 
+.cards{
+    background-color: #e8f4f8;
+    background-image: url('../../recursos/meowth.png');
+    background-size: cover;
 
 
     display: flex;

@@ -1,7 +1,7 @@
 import { Route, useLocation } from 'react-router-dom';
 import { Landing, Home, Form, Detail } from './views/index';
 import NavBar from './components/NavBar/Navbar';
-import './App.css';
+import style from './App.module.css';
 //import pokemons from './datos';
 
 function App() {

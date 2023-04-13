@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import validatePropertyValue from "./validatePropertyValue";
 import { useSelector } from "react-redux";
+import style from './Form.module.css';
 
 
 const urlImage = 'https://raw.githubusercontent.com/Lautaro261/Proyecto-Individual-Pokemon/main/client/src/recursos/defaultCreate.gif';
@@ -42,7 +43,7 @@ const Form = ()=>{
         const value = event.target.value;
         const property = event.target.name;
 
-        console.log(value)
+       // console.log(value)
     
         if(property === 'types'){                                    //'normal'
             if(!form.types.includes(value)){  // ¿No types= [] incluye(value)? false o true
@@ -50,7 +51,7 @@ const Form = ()=>{
 
                 if(form.types.length < 2) { // verifico que no haya mas de 2 elementos en el array
                            //  value no esta en el array y no se supera el limite?  agregalo
-                           console.log(value, 'Me agregaron, estoy en linea 85')
+                           //console.log(value, 'Me agregaron, estoy en linea 85')
                     setForm({...form, types: form.types.concat(parseInt(value))});
                 }
 
@@ -58,7 +59,7 @@ const Form = ()=>{
 
             } else {
                          //  value ya esta en el array? elimina el value existente y agregalo al nuevo
-                         console.log(value, 'si ya existo. Linea 93')
+                        // console.log(value, 'si ya existo. Linea 93')
                  const filteredTypes = form.types.filter(type => type !== value);
 
                 setForm({...form, types: filteredTypes.concat(value)}); 
@@ -72,54 +73,68 @@ const Form = ()=>{
 
     const submitHandler=async(event)=>{
         event.preventDefault();
-        console.log(form)
-         const response = await axios.post(URL, form)
-        //console.log(response?.data , 'SE CREO EXITOSAMENTE')  
-        if(response?.data){
-            console.log(response.data, 'SE CREO EXITOSAMENTE')
-            setForm({
-                name:'',
-                image:urlImage,
-                hp:'',
-                attack:'',
-                defense:'',
-                speed:'',
-                height:'',
-                weight:'',
-                types:[],
-            })
-            setErrors({
-                name:'',
-                image:'',
-                hp:'',
-                attack:'',
-                defense:'',
-                speed:'',
-                height:'',
-                weight:'',
-                types:'',
-            })
+        if(Object.values(errors).every(value => !value)){
+            try {
+        
+                const response = await axios.post(URL, form)
+               //console.log(response?.data , 'SE CREO EXITOSAMENTE')  
+               if(response?.data){
+                  // console.log(response.data, 'SE CREO EXITOSAMENTE')
+                   setForm({
+                       name:'',
+                       image:urlImage,
+                       hp:'',
+                       attack:'',
+                       defense:'',
+                       speed:'',
+                       height:'',
+                       weight:'',
+                       types:[],
+                   })
+                   setErrors({
+                       name:'',
+                       image:'',
+                       hp:'',
+                       attack:'',
+                       defense:'',
+                       speed:'',
+                       height:'',
+                       weight:'',
+                       types:'',
+                   })
+       
+                   alert('Tu pokemon fue creado! Felicidades!')
+               }
+            } catch (error) {
+             alert('No se pudo crear el Pokemon')
+            }
 
-            alert('Tu pokemon fue creado! Felicidades!')
+        }else{
+            alert('No se puede enviar el formulario. Faltan datos')
         }
+       // console.log(form)
+      
+
+        
 
 
     }
 
 
     return (
-        <div>
+        <div className={style.formContainer}>
+
+           {/*  <h1>create your Pokemon!</h1> */}
+        
+        <div className={style.form}> 
         <form onSubmit={submitHandler}>
-            <h1>create your Pokemon!</h1>
-            <div>
-                 <img src={urlImage} alt='create'/>
-            </div>
+            
             <div>
                 {form.types.length < 2 ? <span>Puedes agregar hasta dos tipos</span> :null}
                 {form.types[0] ? <p>Elegiste {allTypes.find(type => type.id === form.types[0]).name}</p> : null}
                 {form.types[1] ? <p>Elegiste {allTypes.find(type => type.id === form.types[1]).name}</p> : null}
 
-                {/* {form.types[1] ? <p>Elegiste {form.types[1]}</p> : null} {/* CAMBIAR ID POR NAME } */}
+        
                 <select onChange={handlerInputChange} name='types' defaultValue={'default'}>
                     <option value='default'>Elige 1 o 2 tipos</option>
                     {allTypes.map((type, index)=>{
@@ -131,54 +146,40 @@ const Form = ()=>{
             </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
             <div>
-                <label>Nombre: </label>
-                <input type="text" placeholder="Su nombre" name='name' value={form.name} onChange={handlerInputChange}></input>
+                <label>Name: </label>
+                <input type="text" placeholder="Ej.: pikachu..." name='name' value={form.name} onChange={handlerInputChange}></input>
                 {errors.name && <span>{errors.name}</span>}
             </div>
-            {/* <div>
-                <label>Image</label>
-                <input type="text" name='image' value={form.image}></input>
-            </div> */}
+            
             <div>
-                <label>Vida: </label>
-                <input type="text" placeholder="Su vida" name='hp' value={form.hp} onChange={handlerInputChange}></input>
+                <label>HP: </label>
+                <input type="text" placeholder="Ej.: 100.." name='hp' value={form.hp} onChange={handlerInputChange}></input>
                 {errors.hp && <span>{errors.hp}</span>}
             </div>
             <div>
-                <label>Ataque: </label>
-                <input type="text" placeholder="Su ataque" name='attack' value={form.attack} onChange={handlerInputChange}></input>
+                <label>Attack: </label>
+                <input type="text" placeholder="Ej.: 80..." name='attack' value={form.attack} onChange={handlerInputChange}></input>
                 {errors.attack && <span>{errors.attack}</span>}
             </div>
             <div>
-                <label>Defensa: </label>
-                <input type="text" placeholder="Su defensa" name='defense' value={form.defense} onChange={handlerInputChange}></input>
+                <label>Defense: </label>
+                <input type="text" placeholder="Ej.: 5" name='defense' value={form.defense} onChange={handlerInputChange}></input>
                 {errors.defense && <span>{errors.defense}</span>}
             </div>
             <div>
-                <label>Velocidad: </label>
-                <input type="text" placeholder="Su velocidad" name='speed' value={form.speed} onChange={handlerInputChange}></input>
+                <label>Speed: </label>
+                <input type="text" placeholder="Ej.: 65" name='speed' value={form.speed} onChange={handlerInputChange}></input>
                 {errors.speed && <span>{errors.speed}</span>}
             </div>
             <div>
-                <label>Altura: </label>
-                <input type="text" placeholder="Su altura" name='height' value={form.height} onChange={handlerInputChange}></input>
+                <label>height: </label>
+                <input type="text" placeholder="Ej.: 20" name='height' value={form.height} onChange={handlerInputChange}></input>
                 {errors.height && <span>{errors.height}</span>}
             </div>
             <div>
-                <label>Peso: </label>
-                <input type="text" placeholder="Su Peso" name='weight' value={form.weight} onChange={handlerInputChange}></input>
+                <label>weight: </label>
+                <input type="text" placeholder="Ej.: 700" name='weight' value={form.weight} onChange={handlerInputChange}></input>
                 {errors.weight && <span>{errors.weight}</span>}
             </div>
             
@@ -189,7 +190,22 @@ const Form = ()=>{
 
             <button type="submit">submit</button>
         </form>
+
         
+        </div >
+        <div className={style.newPokemon}>
+            <h2>New Pokemon</h2>
+            <div>
+                 <img src={urlImage} alt='create'/>
+            </div>
+            <p>Name : {form.name}</p>
+            <p>HP: {form.hp}</p>
+            <p>Attack : {form.attack}</p>
+            <p>Defense : {form.defense}</p>
+            <p>Speed : {form.speed}</p>
+            <p>Height : {form.height/ 10 } m</p>
+            <p>weight : {form.weight / 10 } kg</p>
+        </div>
         </div>
         
     )

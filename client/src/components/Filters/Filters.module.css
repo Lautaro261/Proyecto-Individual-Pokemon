@@ -1,3 +1,84 @@
 .filters{
     background-color: pink;
+    display: flex;
+    justify-content: space-around;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
+
+.orderProp select{
+    border: none;
+    outline: none;
+    font-size: 17px;
+    border: 1px solid #6875d8;
+}
+
+.orderProp option{
+    background-color: #e8f4f8;
+
+}
+
+.button1{
+    background-color: #6875d8;
+    color: #e8f4f8;
+    border-radius: 7px;
+    border: none;
+    margin-right: 20px;
+    padding: 6px;
+    box-shadow: -1px -1px 3px 3px rgba(0,0,0,0.27);
+    -webkit-box-shadow: -1px -1px 3px 3px rgba(0,0,0,0.27);
+    -moz-box-shadow: -1px -1px 3px 3px rgba(0,0,0,0.27);
+}
+.button1:hover{
+    box-shadow: none;
+    border: 1px solid white;
+    background-color: #8a92d1;
+    
+}
+.button2{
+    background-color: #6875d8;
+    color: #e8f4f8;
+    border: none;
+    border-radius: 7px;
+    margin-left: 20px;
+    padding: 6px;
+    box-shadow: -1px -1px 3px 3px rgba(0,0,0,0.27);
+    -webkit-box-shadow: -1px -1px 3px 3px rgba(0,0,0,0.27);
+    -moz-box-shadow: -1px -1px 3px 3px rgba(0,0,0,0.27);
+}
+.button2:hover{
+    box-shadow: none;
+    border: 1px solid white;
+    background-color: #8a92d1;
+}
+
+.filterTypes select{
+    border: none;
+    outline: none;
+    font-size: 17px;
+    border: 1px solid #6875d8;
+}
+
+.filterTypes option{
+    background-color: #e8f4f8;
+
+}
+
+.reset button{
+    background-color: #25c217;
+    color: #e8f4f8;
+    border-radius: 7px;
+    border: none;
+    margin-right: 20px;
+    padding: 6px;
+    box-shadow: -1px -1px 3px 3px rgba(0,0,0,0.27);
+    -webkit-box-shadow: -1px -1px 3px 3px rgba(0,0,0,0.27);
+    -moz-box-shadow: -1px -1px 3px 3px rgba(0,0,0,0.27);
+}
+
+.reset button:hover{
+        box-shadow: none;
+        border: 1px solid white;
+        background-color: #57bb4e;
+}
+

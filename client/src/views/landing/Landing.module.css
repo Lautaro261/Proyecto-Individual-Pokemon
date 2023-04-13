@@ -1,18 +1,32 @@
 .landing {
-    background-image: url('../../recursos/202331516125384_1.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 100vh;
-  }
+  background-image: url('../../recursos/fondoFinal.gif');
+  background-size: cover; /* Cambia esta propiedad */
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items:flex-start;
+}
+
+.container{
+  margin-top: 10%;
+}
 
   .button {
-    background-color: rgb(107, 21, 107);
+    background-color: #ff009d;
     border-radius: 10px;
+    border: none;
     color: white;
     padding: 10px 20px;
+    font-family: 'Bangers', cursive;
+    font-size: 24px;
   }
 
   .button:hover {
-    background-color: rgb(110, 64, 110);
-  }
+    background-color: #b60572;
+    color: rgb(39, 39, 39)
+  } 
+
+
+  

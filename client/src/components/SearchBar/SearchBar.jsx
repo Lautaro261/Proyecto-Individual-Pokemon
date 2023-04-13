@@ -14,12 +14,15 @@ const SearchBar =()=>{
     }
 
     return (
-        <div className={style.searchBar}>
-            <input type='search' onChange={handleChange} value={name} placeholder="Pokemon"></input>
+        <div className={style.searchBarContainer}>
+            <div className={style.searchBar}>
+            <input type='search' onChange={handleChange} value={name} placeholder="Pokemon name or id ..."></input>
             <button onClick={()=>{
                 dispatch(getPokemonByName(name))
                 setName('')
                 }}>Search</button>
+
+            </div>
         </div>
     )
 }

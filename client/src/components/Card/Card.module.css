@@ -1,22 +1,27 @@
 .card{
-    background-color: rgb(20, 87, 141);
-    border: 1px solid rgb(10, 39, 43) ;
+    background-color: rgba(176, 179, 0, 0.795);
+    border: 1px solid rgb(0, 0, 0) ;
     border-radius: 10px;
     -webkit-box-shadow: 10px 13px 31px 5px rgba(0,0,0,0.75);
     -moz-box-shadow: 10px 13px 31px 5px rgba(0,0,0,0.75);
     box-shadow: 10px 13px 31px 5px rgba(0,0,0,0.75);
+
+    background: linear-gradient(218deg,#b0b300 0%, #17886c 80%);
+    background: -webkit-linear-gradient(218deg,#b0b300 0%, #17886c 80%);
+    background: -moz-linear-gradient(218deg,#b0b300 0%, #17886c 80%);
 
     margin: 50px;
     padding: 1em;
 
     display: flex;
     flex-direction: column;  
-    /* justify-content: space-between;  */
-    /* width: fit-content; */
-   /*  flex-wrap:wrap;   */
+    height: 320px;
+    width: 150px;
+
 }
 
 .card h2 {
+    font-family: 'Phudu', cursive;
     color: antiquewhite;
 }
 

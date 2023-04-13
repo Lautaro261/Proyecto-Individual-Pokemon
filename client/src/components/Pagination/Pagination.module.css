@@ -1,31 +1,56 @@
-.pagination{
-    background-color: brown;
+.pagination {
+    background-color: pink;
     display: flex;
     justify-content: space-around;
-    align-items: center; 
-}
+    align-items: center;
+    max-width:max-content;
+  }
+  
+  .ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; 
+  }
+  
+  .ul li {
+    list-style: none;
+    width: auto;
+    margin: 0 10px;
+    display: inline-block;
 
-.ul{
-    background-color: aquamarine;
-}
+  }
 
 .currentButton{
-    background-color: blueviolet;
+    background-color: #f82839;
+    color: #e8f4f8;
+    border: none;
+    border: 1px solid white;
     border-radius: 5px; 
 }
 
 .notCurrentButton{
+    border: none;
     border-radius: 5px;
-    background-color: rgb(94, 107, 117);
+    background-color:#6875d8;
+    border: 1px solid white;
+    color: black;
+
 }
 
 .enabled{
-    border-radius: 5px;
-    background-color: blueviolet;
+    background-color: #6875d8;
+    color: #e8f4f8;
+    border: none;
+    border: 1px solid white;
+    border-radius: 5px; 
 }
 
 
 .disabled{
     display: none;
 
+}
+
+.enabled:hover{
+    background-color: #f82839;
 }

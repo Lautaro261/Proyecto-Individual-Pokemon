@@ -14,14 +14,14 @@ const Cards =(/* {pokemons} */)=>{
     const [currentPage, setcurrentPage]=useState(1);
 
 
-    const lastIndex = currentPage * pokemonPerPage  // 1 * 12
-    const firstIndex = lastIndex -  pokemonPerPage; // 12 - 12
+    const lastIndex = currentPage * pokemonPerPage  // 1 * 12  = 12
+    const firstIndex = lastIndex -  pokemonPerPage; // 12 - 12 = 0 
 
 
 
    useEffect(()=>{
 
-    console.log('allPokemons actualizado:', allPokemons)
+   // console.log('allPokemons actualizado:', allPokemons)
     if(filterPokemons.length!==0){console.log('estaba vacio pero cambie')}
 
     return ()=>{
@@ -36,37 +36,27 @@ const Cards =(/* {pokemons} */)=>{
         <div className={style.contenedor}>
          <div className={style.cards} >
 
-            {allPokemons.length === 0 && <span>Cargando ... </span>}
+            {allPokemons.length === 0 && <img src='../../recursos/pokeball.gif' alt="loading..."/>}
 
-            {filterPokemons.length === 0
-  ? allPokemons.map((char, index) => (
-      <Card
-        key={`${index}-${char.name}`}
-        id={char.id}
-        name={char.name}
-        image={char.image}
-        types={char.types}
-      />
-    )).slice(firstIndex, lastIndex)
-  : filterPokemons.map((char, index) => (
-      <Card
-        key={`${index}-${char.name}`}
-        id={char.id}
-        name={char.name}
-        image={char.image}
-        types={char.types}
-      />
-    )).slice(firstIndex, lastIndex)
-}
-            {/*allPokemons.map((char, index)=>{
-                return (<Card
-                 key={`${index}-${char.name}`} // <- Agregar esta línea
-                id={char.id}
-                name={char.name}
-                image={char.image}
-                types={char.types}
-                />)
-            }).slice(firstIndex, lastIndex)*/}
+            {filterPokemons.length === 0 ? allPokemons.map((char, index) => (
+            <Card
+            key={`${index}-${char.name}`}
+            id={char.id}
+            name={char.name}
+            image={char.image}
+            types={char.types}
+            />
+            )).slice(firstIndex, lastIndex)
+            : filterPokemons.map((char, index) => (
+            <Card
+            key={`${index}-${char.name}`}
+            id={char.id}
+            name={char.name}
+            image={char.image}
+            types={char.types}
+            />)).slice(firstIndex, lastIndex)}
+
+    
            
          </div>
          <div>

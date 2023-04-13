@@ -1,0 +1,115 @@
+.formContainer{
+    background-image: url('../../recursos/PalletTownindoors2.jpg');
+    background-size: cover;
+    height: 100%;
+    padding: 10% ;
+    padding-bottom: 25%; 
+    display: flex;
+    justify-content: center ;
+}
+
+/* falta un media con padding 25% */
+
+
+.form{
+    border: 1px solid black;
+    height: 510px;
+    width: 500px; 
+    border-radius: 10px;
+
+    margin-right: 35px;
+    line-height: 3em;
+
+
+    background-image: linear-gradient(
+  50deg,
+  hsl(350deg 92% 59%) 0%,
+  hsl(345deg 92% 59%) 5%,
+  hsl(341deg 90% 58%) 11%,
+  hsl(338deg 87% 58%) 16%,
+  hsl(334deg 83% 58%) 21%,
+  hsl(330deg 78% 57%) 27%,
+  hsl(326deg 72% 57%) 33%,
+  hsl(321deg 66% 57%) 38%,
+  hsl(315deg 58% 56%) 44%,
+  hsl(308deg 50% 55%) 50%,
+  hsl(298deg 44% 55%) 56%,
+  hsl(288deg 47% 57%) 63%,
+  hsl(277deg 50% 59%) 70%,
+  hsl(267deg 52% 61%) 77%,
+  hsl(256deg 54% 63%) 84%,
+  hsl(244deg 55% 64%) 92%,
+  hsl(233deg 59% 63%) 100%
+);
+}
+
+.form input{
+    border: 1px solid #6875d8;
+}
+.form label{
+    color: #3548d8;
+}
+
+
+.form section{
+    border: 1px solid #f10028;
+}
+
+
+
+.form span{
+    font-family: Arial, Helvetica, sans-serif;
+    color: red;
+    font-size: 12px;
+}
+
+.form button{
+    margin-left: 90px;
+    padding: 8px;
+    padding-left: 50px;
+    padding-right:50px ;
+    border: none;
+    border-radius: 5px;
+    background-color: #2feb00;
+    border: 2px solid black;
+    font-family: 'Bangers', cursive;
+}
+
+.form button:hover{
+    background-color: #177400;
+    color: white;
+    border-radius: 2px solid white;
+}
+
+.form select{
+    border: none;
+    outline: none;
+    font-size: 17px;
+    border: 1px solid #6875d8;
+}
+
+.newPokemon{
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 510px;
+    width: 400px; 
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Phudu', cursive ;
+
+    background: #b0b300;
+    background: linear-gradient(218deg,#b0b300 0%, #17886c 80%);
+    background: -webkit-linear-gradient(218deg,#b0b300 0%, #17886c 80%);
+    background: -moz-linear-gradient(218deg,#b0b300 0%, #17886c 80%);
+
+    box-shadow: 26px 21px 42px -10px rgba(57,128,14,0.84);
+    -webkit-box-shadow: 26px 21px 42px -10px rgba(57,128,14,0.84);
+    -moz-box-shadow: 26px 21px 42px -10px rgba(57,128,14,0.84);
+}
+
+.newPokemon  p{
+    line-height: 0.5em;
+    font-family: 'Bangers', cursive;
+}

@@ -15,7 +15,7 @@ const Card =({id,name,image,types})=>{
 
             {types.map((type, index)=>{
                 return (
-                    <h4 key={index}>{type}</h4>
+                    <h4 key={index}>Type: {type}</h4>
                 )
             })}
 

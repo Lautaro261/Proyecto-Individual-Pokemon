@@ -5,10 +5,17 @@ import style from './Pagination.module.css';
 const Pagination = ({pokemonPerPage,currentPage,setcurrentPage})=>{
 
     const allPokemons = useSelector(state=> state.allPokemons) 
+    const filterPokemons = useSelector(state=> state.filterPokemons)
+    let totalPokemons
     //const [pokemonPerPage, setPokemonPerPage ]= useState(12)
     //const [currentPage, setcurrentPage]=useState(1);
 
-    const totalPokemons = allPokemons.length
+    if(filterPokemons.length===0){
+        totalPokemons = allPokemons.length
+    }else{
+        totalPokemons = filterPokemons.length
+    }
+    //const totalPokemons = allPokemons.length
 
 
     const pageNumber = []; // COMO LLENO EL ARRAY ?
@@ -29,7 +36,7 @@ const Pagination = ({pokemonPerPage,currentPage,setcurrentPage})=>{
     const onClickCurrent=(event)=>{
         const value = parseInt(event.target.value) 
         setcurrentPage(value)
-        console.log(value)
+        //console.log(value)
     }
 
 
@@ -39,22 +46,22 @@ const Pagination = ({pokemonPerPage,currentPage,setcurrentPage})=>{
 
     return(
         <div className={style.pagination}>
-            <button className={currentPage===1 ? style.disabled : style.enabled } onClick={onClickPrevious}>Anterior</button>
+            <button className={currentPage===1 ? style.disabled : style.enabled } onClick={onClickPrevious}>Previous</button>
             <ul className={style.ul}>
                 {pageNumber.map((number, index)=>{
                     return (
-                       /*  <li key={number}> */
+                         <li key={number}> 
                             <button
                             className={`${number === currentPage ? style.currentButton : style.notCurrentButton}`} 
                             key={index}
                             value={number} 
                             onClick={onClickCurrent}
                             >{number}</button>
-                        /* </li> */
+                         </li> 
                     )
                 })}
             </ul>
-            <button className={currentPage >= pageNumber.length ? style.disabled : style.enabled } onClick={onClickNext}>Siguiente</button>
+            <button className={currentPage >= pageNumber.length ? style.disabled : style.enabled } onClick={onClickNext}>Next</button>
         </div>
     )
 }
