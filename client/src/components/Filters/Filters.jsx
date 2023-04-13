@@ -71,7 +71,7 @@ const Filters =()=>{
 
             <div className={style.filterTypes}>
             <select  onChange={(event)=>handlerSelectFilterTypes(event)}> 
-                <option value='default'>Filtros Por tipos</option>    
+                <option value='default'>Filters by types</option>    
                 {allTypes?.map((type, index)=>{
                     return (
                         <option key={index} value={type?.name}>{type?.name}</option>

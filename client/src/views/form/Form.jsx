@@ -134,7 +134,7 @@ const Form = ()=>{
 
         
                 <select onChange={handlerInputChange} name='types' defaultValue={'default'}>
-                    <option value='default'>Elige 1 o 2 tipos</option>
+                    <option value='default'>1 or 2 types</option>
                     {allTypes.map((type, index)=>{
                         return(
                             <option key={index} value={type.id} >{type.name}</option>
