@@ -131,8 +131,6 @@ const Form = ()=>{
             
             <div>
                 {form.types.length < 2 ? <span>Puedes agregar hasta dos tipos</span> :null}
-                {form.types[0] ? <p>Elegiste {allTypes.find(type => type.id === form.types[0]).name}</p> : null}
-                {form.types[1] ? <p>Elegiste {allTypes.find(type => type.id === form.types[1]).name}</p> : null}
 
         
                 <select onChange={handlerInputChange} name='types' defaultValue={'default'}>
@@ -205,6 +203,8 @@ const Form = ()=>{
             <p>Speed : {form.speed}</p>
             <p>Height : {form.height/ 10 } m</p>
             <p>weight : {form.weight / 10 } kg</p>
+            {form.types[0] ? <p>{allTypes.find(type => type.id === form.types[0]).name}</p> : null}
+            {form.types[1] ? <p>{allTypes.find(type => type.id === form.types[1]).name}</p> : null}
         </div>
         </div>
         
