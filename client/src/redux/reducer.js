@@ -109,6 +109,17 @@ const rootReducer=(state=initialState, action)=>{
                     }
                 });
             }
+            if(payload === 'hhp'){
+                stateNew.sort((a,b)=>{
+                    if(a.hp> b.hp){
+                        return -1
+                    }else if(a.hp < b.hp){
+                        return 1
+                    }else{
+                        return 0;
+                    }
+                })
+            }
 
 
             return { ...state, allPokemons: [...stateNew] }; 

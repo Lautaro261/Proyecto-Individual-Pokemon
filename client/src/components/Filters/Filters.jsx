@@ -55,6 +55,7 @@ const Filters =()=>{
               <option value='za'>Z-A</option>
               <option value='ha'>highest attack</option>
               <option value='la'>lowest attack</option>
+              <option value='hhp'>highest hp</option>
             </select>
 
             </div>
