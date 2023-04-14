@@ -32,7 +32,7 @@ const rootReducer=(state=initialState, action)=>{
             return {...state, detailPokemon: {}}
 
         case GET_POKEMON_BY_NAME:
-            console.log(action.payload)
+           // console.log(action.payload)
             return {...state, allPokemons: action.payload}
 
         case GET_ALL_TYPES: 
@@ -40,7 +40,7 @@ const rootReducer=(state=initialState, action)=>{
         
         case FILTER_ID:
            // return{...state, myfavorites: action.payload // state.myfavorites.filter((char)=>char.id!==action.payload)
-           console.log(action.payload, 'ESTO ES LINE 32')
+          // console.log(action.payload, 'ESTO ES LINE 32')
             return {...state, allPokemons: state.allPokemons.filter((char)=> typeof(char.id) === action.payload)}
             // SI ES VERDAD AGREGA AL ARRAY Y RETORNA                                             string
 

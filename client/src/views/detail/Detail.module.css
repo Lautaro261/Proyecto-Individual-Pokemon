@@ -1,9 +1,11 @@
 .detail {
+    background-color: #fef1c2;
+    background-image: url('../../recursos/detail2.png');
+    background-size: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: #fef1c2;
     padding-top: 10px;
   }
   

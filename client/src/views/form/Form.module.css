@@ -1,6 +1,7 @@
 .formContainer{
-    background-image: url('../../recursos/PalletTownindoors2.jpg');
-    background-size: cover;
+    background-image: url('../../recursos/form3.png');
+    background-color: #fef1c2;
+    background-size: 100%;
     height: 100%;
     padding: 10% ;
     padding-bottom: 25%; 
